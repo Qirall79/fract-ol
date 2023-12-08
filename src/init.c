@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:42:57 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/08 16:10:09 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/08 18:08:23 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	init_config(t_config *config, char *name)
 	config->offset_y = 4;
 	config->zoom = 1;
 	config->f_julia = in_set_julia;
-	config->max_color = 0xFFFFFF00;
-	config->min_color = 0xFFFFFFFF;
+	config->max_color = 0x00FF00FF;
+	config->min_color = 0xFFFFFF00;
 	init_set_func(config);
 	if (!config->mlx)
 		exit(EXIT_FAILURE);

@@ -6,11 +6,19 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:11:33 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/08 15:51:34 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/08 19:10:46 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+uint32_t	get_color(int i)
+{
+	uint32_t	result;
+
+	result = (i * 255 / (MAX_ITERATIONS)) + 250;
+	return (result);
+}
 
 void	draw_fractal(t_config *config)
 {
@@ -28,13 +36,11 @@ void	draw_fractal(t_config *config)
 		{
 			mapped_x = (fit_range((double)x, config, 'w') + config->offset_x);
 			mapped_y = (fit_range((double)y, config, 'h') + config->offset_y);
-			color = fit_range((double)(config->f)(mapped_x, mapped_y)
-					- 1, config, 'c');
+			color = get_color((config->f)(mapped_x, mapped_y));
 			if (!ft_strcmp(config->name, "julia")
 				|| !ft_strcmp(config->name, "Julia"))
-				color = fit_range((double)(config->f_julia)
-						(mapped_x, mapped_y, config->julia_x, config->julia_y),
-						config, 'c');
+				color = get_color((config->f_julia)
+						(mapped_x, mapped_y, config->julia_x, config->julia_y));
 			mlx_put_pixel(config->img, x, y, color);
 		}
 	}
