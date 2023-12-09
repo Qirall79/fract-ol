@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:30:16 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/08 15:43:39 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:42:39 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define WIDTH 720.0
 # define HEIGHT 720.0
-# define MAX_ITERATIONS 40.0
+# define MAX_ITERATIONS 100.0
 
 typedef struct s_config
 {

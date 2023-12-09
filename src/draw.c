@@ -6,18 +6,31 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:11:33 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/08 19:10:46 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:55:34 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+
+uint32_t	create_rgbt(int t, int r, int g, int b)
+{
+	return (r << 24 | g << 16 | b << 8 | t);
+}
+
 uint32_t	get_color(int i)
 {
 	uint32_t	result;
 
-	result = (i * 255 / (MAX_ITERATIONS)) + 250;
-	return (result);
+	
+	// result = 255 - (210 + i / MAX_ITERATIONS * 70);
+
+	result = ((255 - (i / MAX_ITERATIONS) * (255))
+        / (cos(i / MAX_ITERATIONS)
+            * sin(i / MAX_ITERATIONS)
+            * tan(i / MAX_ITERATIONS)));
+	// result = 255 * i / MAX_ITERATIONS;
+	return create_rgbt(255, sin(result), tan(result), result);
 }
 
 void	draw_fractal(t_config *config)
