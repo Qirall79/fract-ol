@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:11:33 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/09 15:55:34 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:28:42 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ uint32_t	create_rgbt(int t, int r, int g, int b)
 	return (r << 24 | g << 16 | b << 8 | t);
 }
 
-uint32_t	get_color(int i)
+uint32_t handle_color(int i, int color)
 {
-	uint32_t	result;
-
-	
-	// result = 255 - (210 + i / MAX_ITERATIONS * 70);
-
-	result = ((255 - (i / MAX_ITERATIONS) * (255))
-        / (cos(i / MAX_ITERATIONS)
-            * sin(i / MAX_ITERATIONS)
-            * tan(i / MAX_ITERATIONS)));
-	// result = 255 * i / MAX_ITERATIONS;
-	return create_rgbt(255, sin(result), tan(result), result);
+	if (color == 0)
+		return (get_color_0(i));
+	if (color == 1)
+		return (get_color_1(i));
+	if (color == 2)
+		return (get_color_2(i));
+	if (color == 3)
+		return (get_color_3(i));
+	if (color == 4)
+		return (get_color_4(i));
+	return (get_color_5(i));
 }
 
 void	draw_fractal(t_config *config)
@@ -49,11 +49,9 @@ void	draw_fractal(t_config *config)
 		{
 			mapped_x = (fit_range((double)x, config, 'w') + config->offset_x);
 			mapped_y = (fit_range((double)y, config, 'h') + config->offset_y);
-			color = get_color((config->f)(mapped_x, mapped_y));
-			if (!ft_strcmp(config->name, "julia")
-				|| !ft_strcmp(config->name, "Julia"))
-				color = get_color((config->f_julia)
-						(mapped_x, mapped_y, config->julia_x, config->julia_y));
+			if (!ft_strcmp(config->name, "ship") || !ft_strcmp(config->name, "Ship"))
+				mapped_y = (fit_range((double)y, config, 's') + config->offset_y);
+			color = handle_color((config->f)(mapped_x, mapped_y, config), config->color);
 			mlx_put_pixel(config->img, x, y, color);
 		}
 	}
@@ -66,7 +64,7 @@ void	redraw_fractal(t_config *config)
 	mlx_delete_image(config->mlx, config->img);
 	img = mlx_new_image(config->mlx, config->width, config->height);
 	if (!img || (mlx_image_to_window(config->mlx, img, 0, 0) < 0))
-		return ;
+		exit(1);
 	config->img = img;
 	draw_fractal(config);
 }

@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:07:28 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/08 16:07:37 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:41:34 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	ft_move(mlx_key_data_t key_data, t_config *config)
 	}
 	else if (key_data.key == MLX_KEY_ESCAPE)
 		return (ft_close(config));
-	else
-		return ;
 	redraw_fractal(config);
 }
 
@@ -48,15 +46,19 @@ void	ft_scroll(double xdelta, double ydelta, t_config *config)
 	int32_t	tmp_y;
 	double	mouse_x_before;
 	double	mouse_y_before;
+	char	action;
 
 	tmp_x = 0;
 	tmp_y = 0;
 	mouse_x_before = 0;
 	mouse_y_before = 0;
 	xdelta *= 1;
+	action = 'h';
+	if (!ft_strcmp(config->name, "ship"))
+		action = 's';
 	mlx_get_mouse_pos(config->mlx, &tmp_x, &tmp_y);
 	mouse_x_before = fit_range((double) tmp_x, config, 'w');
-	mouse_y_before = fit_range((double) tmp_y, config, 'h');
+	mouse_y_before = fit_range((double) tmp_y, config, action);
 	if (ydelta < 0)
 		config->zoom *= 0.97;
 	else
@@ -64,6 +66,26 @@ void	ft_scroll(double xdelta, double ydelta, t_config *config)
 	config->offset_x += mouse_x_before
 		- (fit_range((double) tmp_x, config, 'w'));
 	config->offset_y += mouse_y_before
-		- (fit_range((double) tmp_y, config, 'h'));
+		- (fit_range((double) tmp_y, config, action));
+	redraw_fractal(config);
+}
+
+void ft_mouse(mouse_key_t button, action_t action, modifier_key_t mods, t_config* config)
+{
+	(void)mods;
+
+	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
+	{
+		config->color++;
+		if (config->color == 6)
+			config->color = 0;
+	}
+	redraw_fractal(config);
+}
+
+void ft_cursor(double xpos, double ypos, t_config *config)
+{
+	config->julia_x = xpos / config->width;
+	config->julia_y = ypos / config->height;
 	redraw_fractal(config);
 }

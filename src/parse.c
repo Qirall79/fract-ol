@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:38:47 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/08 15:54:03 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:33:55 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ int	ft_verify_args(int argc, char **argv)
 		return (1);
 	if (argc == 2 && (!ft_strcmp(argv[1], "ship")
 			|| !ft_strcmp(argv[1], "Ship")))
+		return (1);
+	if (argc == 2 && (!ft_strcmp(argv[1], "julia")
+			|| !ft_strcmp(argv[1], "Julia")))
 		return (1);
 	if (argc == 4 && (!ft_strcmp(argv[1], "julia")
 			|| !ft_strcmp(argv[1], "Julia"))

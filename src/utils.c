@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:07:28 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/08 15:46:13 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:04:56 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ double	fit_range(double t, t_config *config, char op)
 		new_min = -config->v_boundary * config->zoom;
 		new_max = config->v_boundary * config->zoom;
 	}
-	else if (op == 'c')
+	else if (op == 's')
 	{
-		old_min = 0;
-		old_max = MAX_ITERATIONS;
-		new_min = config->min_color;
-		new_max = config->max_color;
+		old_min = config->height - 1;
+		old_max = 0;
 	}
 	return (new_min + ((new_max - new_min) / (old_min - old_max))
 		* (t - old_min));

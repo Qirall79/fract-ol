@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:30:01 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/08 15:54:34 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:36:45 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	if (!config)
 		exit(EXIT_FAILURE);
 	init_config(config, argv[1]);
-	if (!ft_strcmp(config->name, "julia") || !ft_strcmp(config->name, "Julia"))
+	if (argc == 4)
 	{
 		config->julia_x = ft_atod(argv[2]);
 		config->julia_y = ft_atod(argv[3]);
