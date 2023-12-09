@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/08 17:19:37 by wbelfatm          #+#    #+#              #
-#    Updated: 2023/12/08 18:58:55 by wbelfatm         ###   ########.fr        #
+#    Created: 2023/12/09 18:54:41 by wbelfatm          #+#    #+#              #
+#    Updated: 2023/12/09 20:29:39 by wbelfatm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CFLAGS = -Wall -Wextra -Werror -Ofast
 RM = rm -f
 
 NAME = fractol
-SRCS = src/main.c src/draw.c src/hooks.c src/in_set.c src/parse.c src/utils.c src/init.c
+SRCS = src/main.c src/draw.c src/hooks.c src/in_set.c src/parse.c\
+	src/utils.c src/init.c src/colors.c src/colors_2.c
 OBJS = ${SRCS:.c=.o}
 
 LIBMLX = ./MLX42

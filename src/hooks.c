@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:07:28 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/09 18:41:34 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/09 20:27:11 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ void	ft_scroll(double xdelta, double ydelta, t_config *config)
 	double	mouse_y_before;
 	char	action;
 
-	tmp_x = 0;
-	tmp_y = 0;
-	mouse_x_before = 0;
-	mouse_y_before = 0;
 	xdelta *= 1;
 	action = 'h';
 	if (!ft_strcmp(config->name, "ship"))
@@ -70,10 +66,10 @@ void	ft_scroll(double xdelta, double ydelta, t_config *config)
 	redraw_fractal(config);
 }
 
-void ft_mouse(mouse_key_t button, action_t action, modifier_key_t mods, t_config* config)
+void	ft_mouse(mouse_key_t button, action_t action,
+		modifier_key_t mods, t_config *config)
 {
 	(void)mods;
-
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
 	{
 		config->color++;
@@ -83,7 +79,7 @@ void ft_mouse(mouse_key_t button, action_t action, modifier_key_t mods, t_config
 	redraw_fractal(config);
 }
 
-void ft_cursor(double xpos, double ypos, t_config *config)
+void	ft_cursor(double xpos, double ypos, t_config *config)
 {
 	config->julia_x = xpos / config->width;
 	config->julia_y = ypos / config->height;

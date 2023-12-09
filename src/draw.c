@@ -6,19 +6,18 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:11:33 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/09 18:28:42 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/09 20:28:14 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
 
 uint32_t	create_rgbt(int t, int r, int g, int b)
 {
 	return (r << 24 | g << 16 | b << 8 | t);
 }
 
-uint32_t handle_color(int i, int color)
+uint32_t	handle_color(int i, int color)
 {
 	if (color == 0)
 		return (get_color_0(i));
@@ -49,9 +48,12 @@ void	draw_fractal(t_config *config)
 		{
 			mapped_x = (fit_range((double)x, config, 'w') + config->offset_x);
 			mapped_y = (fit_range((double)y, config, 'h') + config->offset_y);
-			if (!ft_strcmp(config->name, "ship") || !ft_strcmp(config->name, "Ship"))
-				mapped_y = (fit_range((double)y, config, 's') + config->offset_y);
-			color = handle_color((config->f)(mapped_x, mapped_y, config), config->color);
+			if (!ft_strcmp(config->name, "ship")
+				|| !ft_strcmp(config->name, "Ship"))
+				mapped_y = (fit_range((double)y, config, 's')
+						+ config->offset_y);
+			color = handle_color((config->f)(mapped_x, mapped_y, config),
+					config->color);
 			mlx_put_pixel(config->img, x, y, color);
 		}
 	}
