@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:11:33 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/09 20:28:14 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/10 10:05:10 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	redraw_fractal(t_config *config)
 	mlx_delete_image(config->mlx, config->img);
 	img = mlx_new_image(config->mlx, config->width, config->height);
 	if (!img || (mlx_image_to_window(config->mlx, img, 0, 0) < 0))
-		exit(1);
+		exit(EXIT_FAILURE);
 	config->img = img;
 	draw_fractal(config);
 }

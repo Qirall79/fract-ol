@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:07:28 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/09 20:27:11 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/10 09:54:37 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void	ft_mouse(mouse_key_t button, action_t action,
 
 void	ft_cursor(double xpos, double ypos, t_config *config)
 {
+	if (!config->julia_default)
+		return ;
 	config->julia_x = xpos / config->width;
 	config->julia_y = ypos / config->height;
 	redraw_fractal(config);

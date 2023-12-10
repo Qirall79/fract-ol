@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:38:47 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/09 18:33:55 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/10 09:49:38 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ static int	is_valid_double(char *s)
 	i = -1;
 	points = 0;
 	if (s[0] == '-')
+	{
 		i++;
+		if (!s[1])
+			return (0);
+	}
 	while (s[++i] && ((s[i] == '.') || (s[i] <= '9' && s[i] >= '0')))
 	{
 		if (s[i] == '.')

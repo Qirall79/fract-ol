@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:30:16 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/09 20:39:46 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/10 10:10:29 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 # define FRACTOL_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 
 # define WIDTH 720.0
 # define HEIGHT 720.0
-# define MAX_ITERATIONS 100.0
+# define MAX_ITERATIONS 40.0
 
 typedef struct s_config
 {
@@ -39,6 +38,7 @@ typedef struct s_config
 	int			(*f)(double, double, struct s_config *);
 	double		julia_x;
 	double		julia_y;
+	int			julia_default;
 	int			color;
 	double		max_iterations;
 }	t_config;

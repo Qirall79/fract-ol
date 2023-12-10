@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:42:57 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/09 18:40:11 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2023/12/10 09:53:34 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	init_config(t_config *config, char *name)
 	config->zoom = 1;
 	config->color = 0;
 	config->max_iterations = MAX_ITERATIONS;
-	config->julia_x = 0;
-	config->julia_y = 0;
+	config->julia_x = 0.35;
+	config->julia_y = 0.35;
+	config->julia_default = 1;
 	init_set_func(config);
 	if (!config->mlx)
 		exit(EXIT_FAILURE);
