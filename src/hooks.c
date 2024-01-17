@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:07:28 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/10 09:54:37 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:33:37 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ void	ft_move(mlx_key_data_t key_data, t_config *config)
 		config->offset_x = 4;
 		config->offset_y = 4;
 	}
+	else if (key_data.key == MLX_KEY_PAGE_UP)
+		config->max_iterations++;
+	else if (key_data.key == MLX_KEY_PAGE_DOWN)
+		config->max_iterations--;
 	else if (key_data.key == MLX_KEY_ESCAPE)
 		return (ft_close(config));
 	redraw_fractal(config);

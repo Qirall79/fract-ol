@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:30:16 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/10 10:10:29 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:28:07 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ double		ft_atod(char *s);
 void		init_hooks(t_config *config);
 void		init_set_func(t_config *config);
 void		init_config(t_config *config, char *name);
-uint32_t	get_color_0(int i);
-uint32_t	get_color_1(int i);
-uint32_t	get_color_2(int i);
-uint32_t	get_color_3(int i);
-uint32_t	get_color_4(int i);
-uint32_t	get_color_5(int i);
+uint32_t	get_color_0(int i, double iterations);
+uint32_t	get_color_1(int i, double iterations);
+uint32_t	get_color_2(int i, double iterations);
+uint32_t	get_color_3(int i, double iterations);
+uint32_t	get_color_4(int i, double iterations);
+uint32_t	get_color_5(int i, double iterations);
 uint32_t	create_rgbt(int t, int r, int g, int b);
 void		ft_mouse(mouse_key_t button, action_t action,
 				modifier_key_t mods, t_config *config);

@@ -6,7 +6,7 @@
 /*   By: wbelfatm <wbelfatm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:11:33 by wbelfatm          #+#    #+#             */
-/*   Updated: 2023/12/10 10:05:10 by wbelfatm         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:27:30 by wbelfatm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ uint32_t	create_rgbt(int t, int r, int g, int b)
 	return (r << 24 | g << 16 | b << 8 | t);
 }
 
-uint32_t	handle_color(int i, int color)
+uint32_t	handle_color(int i, int color, double iterations)
 {
 	if (color == 0)
-		return (get_color_0(i));
+		return (get_color_0(i, iterations));
 	if (color == 1)
-		return (get_color_1(i));
+		return (get_color_1(i, iterations));
 	if (color == 2)
-		return (get_color_2(i));
+		return (get_color_2(i, iterations));
 	if (color == 3)
-		return (get_color_3(i));
+		return (get_color_3(i, iterations));
 	if (color == 4)
-		return (get_color_4(i));
-	return (get_color_5(i));
+		return (get_color_4(i, iterations));
+	return (get_color_5(i, iterations));
 }
 
 void	draw_fractal(t_config *config)
@@ -53,7 +53,7 @@ void	draw_fractal(t_config *config)
 				mapped_y = (fit_range((double)y, config, 's')
 						+ config->offset_y);
 			color = handle_color((config->f)(mapped_x, mapped_y, config),
-					config->color);
+					config->color, config->max_iterations);
 			mlx_put_pixel(config->img, x, y, color);
 		}
 	}
