@@ -26,13 +26,13 @@ https://github.com/Qirall79/42-fractol/assets/66278832/31427165-5afc-4a80-ae04-d
 Clone the project
 
 ```bash
-  git clone https://github.com/Qirall79/42-fractol.git
+  git clone https://github.com/Qirall79/fract-ol.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd 42-fractol
+  cd fract-ol
 ```
 
 Install dependencies
